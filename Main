@@ -1,0 +1,123 @@
+	package class05;
+	
+	public class Class05{
+
+		public static void recursionGreaterThan(int[] arr, int number, int index)
+		{
+			if(index<arr.length) 
+			{
+			if(arr[index]>number)
+			{
+				System.out.print(arr[index]+" ");
+			}
+			recursionGreaterThan(arr, number, index+1);
+			}
+			else
+			{
+				System.out.println();
+			}
+		}
+		
+		public static void iterationGreaterThan(int[] arr, int limit)
+		{
+			for(int a : arr)
+			{
+				if(a>limit)
+				{
+					System.out.print(a + " ");
+				}
+			}	
+			System.out.println();
+		}
+		
+		public static int iterationTotal(int[] arr, int lowerLimit, int upperLimit)
+		{
+			int sum=0;
+			
+			for(int a : arr)
+			{
+				if((a>=lowerLimit)&&(a<=upperLimit))
+				{
+					sum=sum+a;
+				}			
+			}	
+			return sum;
+		}	
+		public static int recursionTotal(int[] arr, int lowerLimit, int upperLimit, int index)
+		{
+			if(index>0)
+			{
+				if((arr[index]>=lowerLimit)&&(arr[index]<=upperLimit))
+				{
+				return arr[index]+recursionTotal(arr, lowerLimit, upperLimit, index-1);
+				}
+				else
+				{
+					return recursionTotal(arr, lowerLimit, upperLimit, index-1);
+				}
+			}	
+			else
+			{
+				return 0;
+			}
+		
+		}
+		
+		public static int iterationOccurences(int[] arr, int value)
+		{
+			int occurences=0;
+			for(int a : arr)
+			{
+				if(a==value)
+				{
+					occurences++;
+				}
+			}	
+			return occurences;
+		}
+		
+		public static int recursionOccurences(int[] arr, int value, int index)
+		{
+			if(index>=0)
+			{
+				if(arr[index]==value)
+				{
+					return 1+recursionOccurences(arr, value, index-1);
+				}
+				else
+				{
+					return recursionOccurences(arr, value, index-1);
+				}
+			}
+			else
+			{
+				return 0;
+			}}
+			
+		
+	
+	public static void main(String[] args) {
+
+		int test[]= {1,2,3,4,5,6,7,2,2};
+		
+		iterationGreaterThan(test, 2);
+		recursionGreaterThan(test, 2, 0);
+		int low=3;
+		int high=5;
+		System.out.println("\nthe total of all values in interval "+low+" - "+high+" : ");
+		System.out.println(iterationTotal(test, low, high)+ " (I)");
+		System.out.println(recursionTotal(test, low, high, test.length-1) +" (R)");
+		int value=2;
+		System.out.println("\nnumber of occurences of value "+value+" in the array is: ");
+		System.out.println(iterationOccurences(test, value)+" (I)");
+		System.out.println(recursionOccurences(test, value, test.length-1)+" (I)");
+		
+		
+
+		
+
+		
+	}
+
+}
+	
